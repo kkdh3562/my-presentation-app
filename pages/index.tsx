@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Bot, Zap, Users, Clock, FileText, Loader2, Wand2, ChevronRight } from 'lucide-react';
+import { Bot, Zap, Users, Clock, FileText, Loader2, Wand2 } from 'lucide-react';
 
 // Define the backend URL (adjust if your backend runs on a different port)
-const BACKEND_URL = 'http://localhost:5000'; // Default Flask port
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
 const PresentationGenerator: NextPage = () => {
   // --- State Variables ---
@@ -58,7 +58,7 @@ const PresentationGenerator: NextPage = () => {
         // Update the presentation state with the draft text from the backend
         setPresentation(result.draft);
 
-    } catch (e: any) {
+    } catch (e) {
         // Handle network errors or errors thrown from the response handling
         console.error("Error generating presentation:", e);
         setError(e.message || 'Failed to generate presentation. Please check the connection or backend server.');
@@ -74,9 +74,7 @@ const PresentationGenerator: NextPage = () => {
         <Head>
             <title>AI Presentation Generator</title>
             {/* Include Google Fonts if needed, e.g., Inter */}
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+           
         </Head>
 
       <header className="w-full max-w-4xl mb-8 md:mb-12 text-center">
