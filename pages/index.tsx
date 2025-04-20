@@ -22,6 +22,7 @@ const PresentationGenerator: NextPage = () => {
     setError(null);
     setPresentation(null);
 
+    // Basic input validation
     if (!topic.trim() || !audience.trim() || lengthMinutes <= 0) {
       setError('Please fill in all fields with valid values.');
       setIsLoading(false);
@@ -42,14 +43,16 @@ const PresentationGenerator: NextPage = () => {
 
       const result = await response.json();
       setPresentation(result.draft);
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error('Error generating presentation:', e);
-      setError(e.message || 'Failed to generate presentation. Please check the connection or backend server.');
+      const message = e instanceof Error ? e.message : String(e);
+      setError(message || 'Failed to generate presentation. Please check the connection or backend server.');
     } finally {
       setIsLoading(false);
     }
   };
 
+  // --- JSX for Rendering the UI ---
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center p-4 md:p-8 font-sans">
       <Head>
@@ -152,9 +155,7 @@ const PresentationGenerator: NextPage = () => {
               <div className="flex flex-col items-center justify-center h-full text-gray-500 text-center p-6">
                 <FileText size={40} className="mb-4 text-gray-600" />
                 <p className="font-medium">Your presentation draft will appear here.</p>
-                <p className="text-sm mt-1">
-                  Fill in the details and click &apos;Generate Draft&apos;.
-                </p>
+                <p className="text-sm mt-1">Fill in the details and click &apos;Generate Draft&apos;.</p>
               </div>
             )}
             {!isLoading && presentation && (
