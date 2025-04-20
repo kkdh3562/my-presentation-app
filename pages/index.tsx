@@ -178,7 +178,7 @@ const PresentationGenerator: NextPage = () => {
         </div>
 
       </main>
-        <footer className='text-center text-gray-500 text-sm mt-8'>
+        <footer className=&apos;text-center text-gray-500 text-sm mt-8&apos;>
             Powered by AI Magic ✨ (via Backend)
         </footer>
         {/* Global styles for scrollbar and number input appearance */}
