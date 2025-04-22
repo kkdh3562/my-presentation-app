@@ -174,7 +174,7 @@ const PresentationGenerator: NextPage = () => {
       </main>
 
       <footer className="text-center text-gray-500 text-sm mt-8">
-        Powered by Gemini 1.5 Flash API ✨ (via Backend)
+        Powered by Google Gemini API ✨ (via Backend)
       </footer>
 
       {/* Global styles for scrollbar and number input appearance */}
