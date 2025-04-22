@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { Bot, Zap, Users, Clock, FileText, Loader2, Wand2 } from 'lucide-react';
 
 // Define the backend URL (adjust if your backend runs on a different port)
-const BACKEND_URL = process.env.https://my-presentation-backend.onrender.com || 'http://localhost:3000';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3000';
 
 const PresentationGenerator: NextPage = () => {
   // --- State Variables ---
@@ -174,7 +174,7 @@ const PresentationGenerator: NextPage = () => {
       </main>
 
       <footer className="text-center text-gray-500 text-sm mt-8">
-        Powered by AI Magic ✨ (via Backend)
+        Powered by Gemini 1.5 Flash API ✨ (via Backend)
       </footer>
 
       {/* Global styles for scrollbar and number input appearance */}
